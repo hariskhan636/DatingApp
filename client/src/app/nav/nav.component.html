@@ -14,18 +14,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item" *ngIf="loggedIn">
+        <li class="nav-item" *ngIf="accountService.currentUser$ | async">
           <a class="nav-link" href="#">Matches</a>
         </li>
-        <li class="nav-item" *ngIf="loggedIn">
+        <li class="nav-item" *ngIf="accountService.currentUser$ | async">
           <a class="nav-link" href="#">Lists</a>
         </li>
-        <li class="nav-item" *ngIf="loggedIn">
+        <li class="nav-item" *ngIf="accountService.currentUser$ | async">
           <a class="nav-link" href="#">Messages</a>
         </li>
       </ul>
-
-      <div class="dropdown" *ngIf="loggedIn" dropdown>
+      //async automatically unsubscribes when a component is no longer in use
+      <div
+        class="dropdown"
+        *ngIf="accountService.currentUser$ | async"
+        dropdown
+      >
         <a class="dropdown-toggle text-light" dropdownToggle
           >Welcome {{ model.username }}</a
         >
@@ -37,7 +41,7 @@
       </div>
 
       <form
-        *ngIf="!loggedIn"
+        *ngIf="!(accountService.currentUser$ | async)"
         #loginForm="ngForm"
         class="d-flex"
         (ngSubmit)="login()"
