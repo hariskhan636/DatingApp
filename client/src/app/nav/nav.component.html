@@ -3,21 +3,23 @@
     <a class="navbar-brand" routerLink="/">Dating App</a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item" *ngIf="accountService.currentUser$ | async">
-          <a class="nav-link" routerLink="/members" routerLinkActive="active"
-            >Matches</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="accountService.currentUser$ | async">
-          <a class="nav-link" routerLink="/lists" routerLinkActive="active"
-            >Lists</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="accountService.currentUser$ | async">
-          <a class="nav-link" routerLink="/messages" routerLinkActive="active"
-            >Messages</a
-          >
-        </li>
+        <ng-container *ngIf="accountService.currentUser$ | async">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/members" routerLinkActive="active"
+              >Matches</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/lists" routerLinkActive="active"
+              >Lists</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/messages" routerLinkActive="active"
+              >Messages</a
+            >
+          </li>
+        </ng-container>
       </ul>
       //async automatically unsubscribes when a component is no longer in use
       <div
@@ -25,9 +27,7 @@
         *ngIf="accountService.currentUser$ | async"
         dropdown
       >
-        <a class="dropdown-toggle text-light" dropdownToggle
-          >Welcome {{ model.username }}</a
-        >
+        <a class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item">Edit Profile</a>
           <div class="dropdown-divider"></div>
