@@ -20,10 +20,10 @@ namespace API.Models
         public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
 
-        public int GetAge()
-        {
+        // public int GetAge()
+        // {
 
-            return DateOfBirth.CalculateAge();
-        }
+        //     return DateOfBirth.CalculateAge();
+        // }
     }
 }
