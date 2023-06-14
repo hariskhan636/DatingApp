@@ -477,3 +477,5 @@ $RECYCLE.BIN/
 *.lnk
 
 appsettings.json
+datingapp.db-shm
+datingapp.db-wal
