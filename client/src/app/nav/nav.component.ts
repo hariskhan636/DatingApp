@@ -26,7 +26,6 @@ export class NavComponent implements OnInit {
         console.log(err), this.toastr.error(err.error);
       },
     });
-    console.log(this.accountService.currentUser$);
   }
 
   logout() {
