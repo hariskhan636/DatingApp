@@ -54,21 +54,21 @@
         <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
           <h4>Description</h4>
           <textarea
-            class="form-control"
+            class="form-control border-primary"
             [(ngModel)]="member.introduction"
             name="introduction"
             rows="6"
           ></textarea>
           <h4 class="mt-2">Looking For</h4>
           <textarea
-            class="form-control"
+            class="form-control border-primary"
             [(ngModel)]="member.lookingFor"
             name="lookingFor"
             rows="6"
           ></textarea>
           <h4 class="mt-2">Interests</h4>
           <textarea
-            class="form-control"
+            class="form-control border-primary"
             [(ngModel)]="member.interests"
             name="interests"
             rows="6"
@@ -80,14 +80,14 @@
               [(ngModel)]="member.city"
               type="text"
               name="city"
-              class="form-control mx-2"
+              class="form-control mx-2 border-primary"
             />
             <label for="country">Country: </label>
             <input
               [(ngModel)]="member.country"
               type="text"
               name="country"
-              class="form-control mx-2"
+              class="form-control mx-2 border-primary"
             />
           </div>
         </form>
