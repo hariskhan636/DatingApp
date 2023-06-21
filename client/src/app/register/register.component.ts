@@ -9,6 +9,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,14 +19,15 @@ import {
 export class RegisterComponent implements OnInit {
   @Input() usersFromHome: any; //recieve from parent
   @Output() cancelRegister = new EventEmitter(); //send data to parent
-  model: any = {};
   registerForm!: FormGroup;
   maxDate!: Date;
+  validationErrors: string[] = [];
 
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -62,16 +64,14 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value);
-
-    // this.accountService.register(this.model).subscribe({
-    //   next: (res) => {
-    //     console.log(res), this.cancel();
-    //   },
-    //   error: (err) => {
-    //     console.log(err), this.toastr.error(err.error);
-    //   },
-    // });
+    this.accountService.register(this.registerForm.value).subscribe({
+      next: (res) => {
+        this.router.navigateByUrl('/members'), this.cancel();
+      },
+      error: (err) => {
+        this.validationErrors = err;
+      },
+    });
   }
 
   cancel() {

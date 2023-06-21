@@ -37,6 +37,9 @@ namespace API.Controllers
             user.UserName = register.UserName.ToLower();
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(register.Password));
             user.PasswordSalt = hmac.Key;
+            user.Interests = "";
+            user.Introduction = "";
+            user.LookingFor = "";
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
