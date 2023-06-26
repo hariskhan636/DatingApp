@@ -5,8 +5,7 @@
 
   <div class="col-8">
     <div class="alert alert-info" *ngIf="editForm.dirty">
-      <strong>Information: </strong>Changes made. Any unsaved changes will be
-      lost
+      <strong>Information: </strong>Changes made. Any unsaved changes will be lost
     </div>
   </div>
 
@@ -28,20 +27,15 @@
         </div>
         <div>
           <strong>Last Active:</strong>
-          <p>{{ member.lastActive.toString().slice(0, 10) }}</p>
+          <p>{{ member.lastActive | date : "longDate" }}</p>
         </div>
         <div>
           <strong>Member Since:</strong>
-          <p>{{ member.created.toString().slice(0, 10) }}</p>
+          <p>{{ member.created | date : "longDate" }}</p>
         </div>
       </div>
       <div class="card-footer">
-        <button
-          [disabled]="!editForm.dirty"
-          form="editForm"
-          type="submit"
-          class="btn btn-primary btn-block"
-        >
+        <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-primary btn-block">
           Save Changes
         </button>
       </div>
@@ -76,19 +70,9 @@
           <h4 class="mt-2">Location Details:</h4>
           <div class="d-flex flex-row align-items-center">
             <label for="city">City: </label>
-            <input
-              [(ngModel)]="member.city"
-              type="text"
-              name="city"
-              class="form-control mx-2 border-primary"
-            />
+            <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2 border-primary" />
             <label for="country">Country: </label>
-            <input
-              [(ngModel)]="member.country"
-              type="text"
-              name="country"
-              class="form-control mx-2 border-primary"
-            />
+            <input [(ngModel)]="member.country" type="text" name="country" class="form-control mx-2 border-primary" />
           </div>
         </form>
       </tab>

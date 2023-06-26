@@ -17,11 +17,11 @@
         </div>
         <div>
           <strong>Last Active:</strong>
-          <p>{{ member.lastActive.toString().slice(0, 10) }}</p>
+          <p>{{ member.lastActive | date : "longDate" }}</p>
         </div>
         <div>
           <strong>Member Since:</strong>
-          <p>{{ member.created.toString().slice(0, 10) }}</p>
+          <p>{{ member.created | date : "longDate" }}</p>
         </div>
       </div>
       <div class="card-footer">

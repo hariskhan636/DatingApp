@@ -48,7 +48,7 @@
     [type]="'password'"
   ></app-text-input>
 
-  <div class="row" *ngIf="validationErrors.length > 0">
+  <div class="row" *ngIf="validationErrors">
     <ul class="text-danger">
       <li *ngFor="let error of validationErrors">
         {{ error }}
@@ -57,7 +57,13 @@
   </div>
 
   <div class="form-group text-center">
-    <button class="btn btn-success mx-2" type="submit">Register</button>
+    <button
+      [disabled]="!registerForm.valid"
+      class="btn btn-success mx-2"
+      type="submit"
+    >
+      Register
+    </button>
     <button class="btn btn-danger" (click)="cancel()" type="button">
       Cancel
     </button>

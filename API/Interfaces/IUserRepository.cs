@@ -1,4 +1,5 @@
 using API.DTOs;
+using API.Helpers;
 using API.Models;
 
 namespace API.Interfaces
@@ -10,7 +11,7 @@ namespace API.Interfaces
         Task<IEnumerable<User>> GetUsersAsync();
         Task<User> GetUserByIdAsync(int id);
         Task<User> GetUserByNameAsync(string username);
-        Task<IEnumerable<MemberDto>> GetMembersAsync();
+        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string username);
 
     }
