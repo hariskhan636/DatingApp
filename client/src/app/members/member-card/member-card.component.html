@@ -6,7 +6,7 @@
         <button class="btn btn-primary me-2" routerLink="/members/{{ member.userName }}">
           <i class="fa fa-user"></i>
         </button>
-        <button class="btn btn-primary me-2">
+        <button (click)="addLike(member)" class="btn btn-primary me-2">
           <i class="fa fa-heart"></i>
         </button>
         <button class="btn btn-primary me-2">
