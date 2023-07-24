@@ -79,7 +79,7 @@ namespace API.Controllers
             var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var message = await _messageRepository.GetMessage(id);
 
-            if (message.Sender.UserName != username || message.Recipient.UserName != username)
+            if (message.Sender.UserName != username && message.Recipient.UserName != username)
                 return Unauthorized();
 
             if (message.SenderUsername == username) message.SenderDeleted = true;
